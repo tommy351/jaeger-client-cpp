@@ -15,8 +15,8 @@ include(HunterGate)
 option(HUNTER_BUILD_SHARED_LIBS "Build Shared Library" ON)
 
 HunterGate(
-    URL "https://github.com/cpp-pm/hunter/archive/v0.23.249.tar.gz"
-    SHA1 "d45d77d8bba9da13e9290a180e0477e90accd89b"
+    URL "https://github.com/cpp-pm/hunter/archive/v0.23.317.tar.gz"
+    SHA1 "fbdd94b1966d351384e27b02c8d134915b1131d6"
     LOCAL # load `${CMAKE_CURRENT_LIST_DIR}/cmake/Hunter/config.cmake`
 )
 
@@ -101,11 +101,7 @@ if(JAEGERTRACING_WITH_YAML_CPP)
   # Not `${hunter_config}` because yaml-cpp provides its own
   # yaml-cpp-config.cmake file
   find_package(yaml-cpp CONFIG REQUIRED)
-  if(HUNTER_ENABLED)
-      list(APPEND LIBS yaml-cpp::yaml-cpp)
-  else()
-      list(APPEND LIBS yaml-cpp)
-  endif()
+  list(APPEND LIBS yaml-cpp)
   list(APPEND package_deps yaml-cpp)
 endif()
 
@@ -240,7 +236,7 @@ function(update_path_for_test atest)
     # If dependent library is a DLL we have to add location of DLL to PATH
     set(new_path "")
 
-    foreach(LIB OpenTracing::opentracing yaml-cpp::yaml-cpp GTest::main)
+    foreach(LIB OpenTracing::opentracing yaml-cpp GTest::main)
       list(APPEND new_path $<TARGET_FILE_DIR:${LIB}>)
     endforeach()
     list(APPEND new_path $ENV{PATH})
