@@ -190,22 +190,6 @@ class Span : public opentracing::Span {
                                                      : itr->second;
     }
 
-    void Log(opentracing::SystemTime timestamp,
-             std::initializer_list<
-                 std::pair<opentracing::string_view, opentracing::Value>>
-                 fieldPairs) noexcept override
-    {
-        doLog(timestamp, fieldPairs);
-    }
-
-    void Log(opentracing::SystemTime timestamp,
-             const std::vector<
-                 std::pair<opentracing::string_view, opentracing::Value>>&
-                 fieldPairs) noexcept override
-    {
-        doLog(timestamp, fieldPairs);
-    }
-
     void Log(std::initializer_list<
              std::pair<opentracing::string_view, opentracing::Value>>
                  fieldPairs) noexcept override
