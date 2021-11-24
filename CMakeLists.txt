@@ -101,7 +101,11 @@ if(JAEGERTRACING_WITH_YAML_CPP)
   # Not `${hunter_config}` because yaml-cpp provides its own
   # yaml-cpp-config.cmake file
   find_package(yaml-cpp CONFIG REQUIRED)
-  list(APPEND LIBS yaml-cpp)
+  if(HUNTER_ENABLED)
+      list(APPEND LIBS yaml-cpp)
+  else()
+      list(APPEND LIBS yaml-cpp)
+  endif()
   list(APPEND package_deps yaml-cpp)
 endif()
 
