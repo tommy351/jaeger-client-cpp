@@ -276,7 +276,6 @@ if(JAEGERTRACING_PLUGIN)
   add_lib_deps(jaegertracing_plugin)
   target_link_libraries(jaegertracing_plugin PUBLIC
     -static-libgcc
-    -static-libstdc++
     -Wl,--version-script=${CMAKE_CURRENT_BINARY_DIR}/export.map)
 endif()
 
